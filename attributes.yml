@@ -1,0 +1,146 @@
+attributes:
+  - name: Availability
+    params:
+      weight: 5
+      utility: s_curve
+      utility_params:
+        slope: 5
+        midpoint: 0.5
+
+  - name: Market Penetration
+    params:
+      weight: 5
+      utility: s_curve
+      utility_params:
+        slope: 5
+        midpoint: 0.5
+
+  - name: New Market Opportunities
+    params:
+      weight: 2
+      utility: s_curve
+      utility_params:
+        slope: 1
+        midpoint: 0.5
+
+  - name: Resiliency
+    params:
+      weight: 4
+      utility: s_curve
+      utility_params:
+        slope: 10
+        midpoint: 0.7
+
+  - name: Trust
+    params:
+      weight: 3
+      utility: s_curve
+      utility_params:
+        slope: 10
+        midpoint: 0.8
+
+costs:
+  - name: Interoperability
+    params:
+      weight: 4
+
+  - name: Lobbying Effort
+    params:
+      weight: 3
+
+  - name: CAPEX
+    params:
+      weight: 5
+
+  - name: Operating Cost
+    params:
+      weight: 3
+
+design_decisions:
+  - name: Interfaces
+    affects:
+      - New Market Opportunities: 3
+      - Trust: 1
+      - Interoperability: 3
+      - Lobbying Effort: 4
+      - CAPEX: 2
+      - Operating Cost: 4
+    options:
+      - Proprietary: [low, low, low, low, low, high]
+      - New Open Standard: [high, medium, medium, medium, medium, low]
+      - Existing Standard: [high, high, high, high, low, low]
+
+  - name: Power Generation Model
+    affects:
+      - Availability: 5
+      - Market Penetration: 2
+      - Resiliency: 3
+      - Interoperability: 3
+      - Lobbying Effort: 1
+      - CAPEX: 5
+      - Operating Cost: 4
+    options:
+      - Small on Distribution Lines: [low, high, high, medium, low, low, medium]
+      - Medium on Distribution Lines: [medium, medium, high, low, medium, medium, high]
+      - Large on Transmission Lines: [high, low, low, high, high, high, low]
+
+  - name: Power Storage Model
+    affects:
+      - Market Penetration: 5
+      - Resiliency: 5
+      - Lobbying Effort: 4
+      - CAPEX: 5
+    options:
+      - Individual: [low, high, low, low]
+      - Collective: [high, medium, high, high]
+
+  - name: Marketplace Transparency
+    affects:
+      - Market Penetration: 1
+      - New Market Opportunities: 5
+      - Trust: 5
+      - Lobbying Effort: 3
+    options:
+      - Closed: [low, low, low, low]
+      - Open: [high, high, high, high]
+
+  - name: Legacy Producers Handling
+    affects:
+      - Availability: 4
+      - Trust: 1
+      - Interoperability: 4
+      - Lobbying Effort: 3
+      - Operating Cost: 2
+    options:
+      - No Interfacing: [high, low, high, low, low]
+      - Interface for Billing Only: [medium, medium, medium, low, medium]
+      - Interface for Billing and Generation: [low, high, low, high, high]
+
+  - name: Trading Platform Enrollment
+    affects:
+      - Availability: 4
+      - Market Penetration: 4
+      - Trust: 1
+    options:
+      - No Restriction: [low, high, low]
+      - Controlled: [high, medium, high]
+
+  - name: Pricing Control
+    affects:
+      - New Market Opportunities: 4
+      - Trust: 3
+      - Lobbying Effort: 5
+      - Operating Cost: 1
+    options:
+      - Prosumer Defined Pricing: [high, low, low, high]
+      - Regulated Prosumer Defined Pricing: [high, medium, high, high]
+      - Fixed Price: [low, high, high, low]
+
+  - name: Grid Usage Fee
+    affects:
+      - Market Penetration: 1
+      - Interoperability: 3
+      - Lobbying Effort: 2
+    options:
+      - Fee per transaction: [high, low, high]
+      - Subscription: [low, high, low]
