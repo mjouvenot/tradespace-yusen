@@ -55,6 +55,14 @@ class TradeSpace:
 
         return result
 
+    def __repr__(self):
+        return "%s(attributes=%s, costs=%s, impact_scores=%s, design_decisions=%s)" % \
+               (self.__class__.__name__,
+                str(self.attributes), str(self.costs), str(self.impact_scores), str(self.design_decisions))
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class DesignDecision:
     rating = ['low', 'medium', 'high']
@@ -88,6 +96,15 @@ class DesignDecision:
 
         return result
 
+    def __repr__(self):
+        return "%s(affected_attributes=%s, design_options=%s)" % \
+               (self.__class__.__name__,
+                self.affected_attributes,
+                self.design_options)
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class CostElement:
     def __init__(self, weight):
@@ -116,7 +133,7 @@ class Attribute:
         return self.utility(x, **self.utility_params)
 
     def _repr_(self):
-        return "%s(weight=%s, utility=%r, utility_params=%s)" % \
+        return "%s(weight=%s, utility=%s, utility_params=%s)" % \
                (self.__class__.__name__,
                 self.weight,
                 self.utility,

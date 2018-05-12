@@ -88,7 +88,7 @@ design_decisions:
     affects:
       - Market Penetration: 5
       - Resiliency: 5
-      - Lobbying Effort: 4
+      - Lobbying Effort: 2
       - CAPEX: 5
     options:
       - Individual: [low, high, low, low]
@@ -128,13 +128,13 @@ design_decisions:
   - name: Pricing Control
     affects:
       - New Market Opportunities: 4
-      - Trust: 3
+      - Market Penetration: 4
       - Lobbying Effort: 5
       - Operating Cost: 1
     options:
-      - Prosumer Defined Pricing: [high, low, low, high]
+      - Prosumer Defined Pricing: [high, high, low, high]
       - Regulated Prosumer Defined Pricing: [high, medium, high, high]
-      - Fixed Price: [low, high, high, low]
+      - Fixed Price: [low, low, high, low]
 
   - name: Grid Usage Fee
     affects:
